@@ -4,3 +4,4 @@ flann-1.8.4-src
 *.log
 *.out
 *.tex
+*_notes
