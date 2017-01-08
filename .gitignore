@@ -1,0 +1,6 @@
+pmtk3-master
+flann-1.8.4-src
+*.aux
+*.log
+*.out
+*.tex
