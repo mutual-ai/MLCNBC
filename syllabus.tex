@@ -1,0 +1,227 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{fancyhdr, lastpage, bbding, pmboxdraw}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{Machine Learning} }
+%\chead{ \fancyplain{}{} }
+\rhead{ \fancyplain{}{Spring, 2017} }
+%\rfoot{\fancyplain{}{page \thepage\ of \pageref{LastPage}}}
+\fancyfoot[RO, LE] {page \thepage\ of \pageref{LastPage} }
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+{\Large \textsc{Machine Learning}}
+\end{center}
+\begin{center}
+Fall 2014
+\end{center}
+%\date{September 26, 2014}
+
+\begin{center}
+\rule{6in}{0.4pt}
+\begin{minipage}[t]{.75\textwidth}
+\begin{tabular}{llcccll}
+\textbf{Instructor:} & Patrick Beukema & & &  & \textbf{Time:} & W 12:00 -- 1:00 \\
+\textbf{Email:} &  \href{plb23@pitt.edu}{plb23@pitt.edu} & & & & \textbf{Place:} & 434E Baker Hall
+\end{tabular}
+\end{minipage}
+\rule{6in}{0.4pt}
+\end{center}
+\vspace{.5cm}
+\setlength{\unitlength}{1in}
+\renewcommand{\arraystretch}{2}
+
+\noindent\textbf{Course Page:} \begin{enumerate}
+\item \url{http://github.com/pbeukema/CNBC_ML}
+
+\end{enumerate}
+
+\vskip.15in
+\noindent\textbf{Office Hours:} After class, or by appointment, or post your questions in the forum provided for this purpose on AeLP.
+
+\vskip.15in
+\noindent\textbf{Main Text:} %\footnotemark
+Each Week we will read and do exercises from one chapter of Machine Learning: A Probabilistic Perpspective. 
+\begin{itemize}
+\item Christopher M. Bishop, {\textit{Pattern Recognition and Machine Learning}}, Springer, 2006.
+\item Peter J. Carrington, John Scott, and Stanley Wasserman, {\textit{Models and Methods in Social Network Analysis}}, Cambridge University Press, 2005.
+\item Richard O. Duda, Peter E. Hart, and David G. Stork, {\textit{Pattern Classification}}, Wiley, 2nd ed., 2000.
+\item Peter Flach, {\textit{Machine Learning: The Art and Science of Algorithms that Make Sense of Data}}, Cambridge University Press, 2012.
+\item Trevor Hastie, Robert Tibshirani, and Jerome Friedman, {\textit{The Elements of Statistical Learning: Data Mining, Inference, and Prediction}}, Springer, 2nd ed., 2009.
+\item David Insua, Fabrizio Ruggeri, and Mike Wiper, {\textit{Bayesian Analysis of Stochastic Process Models}}, Wiley, 2012.
+\item Michael I. Jordan, {\textit{Learning in Graphical Models}}, MIT Press, 1999.
+\item Daphne Koller, and Nir Friedman,  {\textit{Probabilistic Graphical Models: Principles and Techniques}}, MIT Press, 2009.
+\item Timo Koski, and John Noble, {\textit{Bayesian Networks: An Introduction}}, Wiley, 2009.
+\item Dirk P. Kroese, and Joshua C. C. Chan, {\textit{Statistical Modeling and Computation}}, Springer, 2014.
+\item Kevin P. Murphy, {\textit{Machine Learning: A Probabilistic Perspective}}, MIT Press, 2012.
+\item Mark Newman, {\textit{Networks: An Introduction}}, Oxford University Press, 2010.
+\item Sheldon M. Ross, {\textit{Introduction to Probability Models}}, Academic Press, 9th ed., 2006.
+\item Reuven Y. Rubinstein, and Dirk P. Kroese, {\textit{Simulation and the Monte Carlo Method}}, Wiley, 2nd ed., 2007.
+\item Henk C. Tijms, {\textit{A First Course in Stochastic Models}}, Wiley, 2nd ed., 2003.
+% \item  Shai Shalev-Shwartz, and Shai Ben-David, {\emph{Understanding Machine Learning: From Theory to Algorithms}}, Cambridge University Press, 2014.
+\end{itemize} 
+
+% \footnotetext{Downloadable ebook versions are available on AeLP.}
+
+\vskip.15in
+\noindent\textbf{Objectives:}  This course is  primarily designed for graduate students, and will introduce an audience to the state-of-the-art in modeling techniques for computer science and engineering majors. We try to discuss as many models as possible. We chiefly focus on complex networks, inference, machine learning, and probabilistic/statistical models and methods.
+
+At the end of the course, a successful student should be able to:
+\begin{itemize}
+\item understand and identify various models and know how and when to use them,
+\item comprehend and implement the most popular models and learning algorithms,
+\item perform experimental set up on real situation,
+\item develop an advanced-level understanding of statistical inference procedures,
+\item analyze, and make inferences and decisions.
+\end{itemize}
+
+
+\vskip.15in
+\noindent\textbf{Prerequisites:}
+It will be challenging to follow along without some bacground in calculus, linear algebra, probability and statistics. 
+
+
+\vspace*{.15in}
+
+\noindent \textbf{Tentative Course Outline:}
+\begin{center} 
+\begin{minipage}{5in}
+\begin{flushleft}
+%Chapter 1 \dotfill ~$\approx$ 3 days \\
+{\color{darkgreen}{\Rectangle}} ~A little of probability theory and graph theory	\\
+{\color{darkgreen}{\Rectangle}} ~Generative models		\\
+{\color{darkgreen}{\Rectangle}} ~Markov models and queues	\\
+{\color{darkgreen}{\Rectangle}} ~Markov chain Monte Carlo \\
+{\color{darkgreen}{\Rectangle}} ~Gaussian models		\\
+{\color{darkgreen}{\Rectangle}} ~Linear models		\\
+{\color{darkgreen}{\Rectangle}} ~Graphical models \\
+{\color{darkgreen}{\Rectangle}} ~Mixture models	\\
+{\color{darkgreen}{\Rectangle}} ~Support vector machines	\\
+{\color{darkgreen}{\Rectangle}} ~A glimpse of complex networks (e.g. social and biological networks)	
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\vspace*{.15in}
+\noindent\textbf{Grading Policy:} Homework and quizzes (20\%),  Midterm 1 (25\%), Midterm 2 (25\%), Final (30\%). %Four Projects (40\% = 4 * 10\%)
+
+\vskip.15in
+\noindent\textbf{Important Dates:}
+\begin{center} \begin{minipage}{3.8in}
+\begin{flushleft}
+Midterm \#1      \dotfill ~\={A}b\={a}n 16, 1393 $\equiv$ November 7, 2014 \\
+Midterm \#2      \dotfill ~\={A}zar 21, 1393 $\equiv$ December 12, 2014 \\
+%Project Deadline \dotfill ~Month Day \\
+Final Exam       \dotfill ~Dey 18, 1393 $\equiv$ January 8, 2015 \\
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\vskip.15in
+\noindent\textbf{Course Policy:}  
+\begin{itemize}
+\item Please sign up for AeLP. I will confirm your enrollment for the course, then you will be able to see the course page.
+\item We have weekly homework and quiz. You will be given a quick quiz (based on the given homework)
+on the day that the homework is due. You are allowed to use your homework solutions to help you on the quiz, but not anything else.
+\item Late homework will never be accepted. Homework not submitted online before the deadline and/or not turned in with the quiz will be considered late.
+\item Homework solutions must be typeset (preferably using \LaTeX~), and all programming codes should be well documented.
+\item Nearly perfect solutions may be considered as an official solution of that homework and will be uploaded to the course web site, and the student gets a bonus mark.
+\item All homework solutions, programming codes, etc., must be submitted both electronically (through AeLP) and in class (along with the quiz). For electronic submission, create a folder (directory) on your computer, put your files all in there, zip the package, and submit it once you get them done. You can submit your files only once, and you are NOT allowed to edit the files after submission, so read/edit your files carefully before submission. If there is something that you would like me to know while grading your assignment, please write it in the comment box above the submit button or create a file called \texttt{README} in that directory and write your message there. So, please do not mail your homework solutions, codes, etc to me.
+\item You may discuss homework problems with other students, but you must write up your homework independently in your own words. You are not allowed to search the Web for solutions,  as AeLP is equipped with a built-in plagiarism detector.
+\item Your lowest homework-quiz score will be dropped when calculating your final homework-quiz grade.
+\item The exams may or may not be take-home. If not, by default, all exams (midterms and final) are closed book, and you are not allowed to use any electronic devices such as mobiles and tablets. 
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Class Policy:}  
+\begin{itemize}
+\item Regular attendance is essential and expected. A student who incurs an excessive number of absences may be withdrawn from the class at the instructor's discretion.
+\item Be courteous when using mobile devices. Make sure your cell phone is turned fully off, or silent. No texting, reading emails, playing games, or whatever else it is that people do with those wretched gizmos.
+\item If you must use a laptop in class, then turn off the sound and do not type on laptop keyboards which is really distracting.
+\item Missing one class could easily lead to a disastrous domino effect. If you have to miss a lecture, then I strongly recommend you study the material you missed before you return to class. I require that you know all material covered in class. You are responsible for making up anything that was covered in lectures you missed. If you miss a lecture, I recommend doing the following:
+\begin{itemize}
+\item Photocopy, and read notes from someone who was in class,
+\item Reading the relevant sections from the lecture note, texts, Wikipedia, etc.
+%\item Look at the lecture schedule posted online.
+\end{itemize}
+After you have done this, you may contact me if you need clarification on any materials.
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Academic Honesty:}   Lack of knowledge of the academic honesty policy is not a reasonable explanation for a violation. Questions related to course assignments and the
+academic honesty policy should be directed to the instructor. \\
+{\color{darkred}{\Large \HandRight}} ~I certainly impose a sanction on the student committed to any academic fraud. It varies depending upon the instructor's evaluation of the nature and gravity of the offense. Possible sanctions include but are not limited to, the following: (1) Require the student to redo the assignment; (2) Require the student to complete another assignment; (3) Assign a grade of \textbf{zero} to the assignment; (4) Assign  a final grade of \textbf{zero} for the whole course.
+
+\vskip.15in
+\noindent \textbf{Install \LaTeX ~on Linux:}  In case you do not have \LaTeX ~installed on your PC, open the terminal and write the following commands (it may take a couple of hours):
+
+\begin{lstlisting}
+  $ sudo apt-get install texlive-full
+\end{lstlisting}
+
+In addition, you need a text editor. There are many text editors on the internet, but I myself prefer {\href{http://www.xm1math.net/texmaker/}{Texmaker}} and {\href{http://texstudio.sourceforge.net/}{TeXstudio}}. If your Linux version is new (higher than 12.10), TeXstudio is available in the Repositories.
+
+\begin{lstlisting}
+  $ sudo apt-get install texmaker
+  $ sudo apt-get install texstudio
+\end{lstlisting}
+
+
+
+%%%%%% END 
+\end{document} 
