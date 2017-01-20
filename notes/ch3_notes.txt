@@ -1,0 +1,35 @@
+Andrew Ng -- generative learning algorithms.
+  cs229.stanford.edu/notes/cs229-notes2.pdf
+Need to know what the distributions
+
+Naive Bayes in 50 Lines:
+  http://ebiquity.umbc.edu/blogger/2010/12/07/naive-bayes-classifier-in-50-lines/
+
+http://www.brainyblog.net/2017/01/17/what-should-an-intro-to-machine-learning-course-look-like/
+
+Basic algorithms: NB, LR, SVM KNN
+Requirements about input data, continuous, discete features, data dim
+assumptions it makes about data
+When will it work, when will it not works
+The learned model
+How it is trained
+
+Cross validation, hold out sets, circulatirty of analysis/overfitting
+feature selection, n>>p, bias variance tradeoff
+
+More advanced:
+optimizaiton
+more algorithms
+statistical significance, permutaiton tetsts, signed rank test
+data viz, unsupervxed methods, dim reductions
+what o the weight values mean in a lienar classifier.
+
+prior should look like what posterior
+
+marginal likelihood
+
+likelihood functions
+
+Have people present data and see whether algoirthms can apply to this dataset.
+
+How should I struture my data to plug it into the algorithm.
